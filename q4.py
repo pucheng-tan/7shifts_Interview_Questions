@@ -41,9 +41,15 @@ def Add(numbers):
 
 print("Testing start.")
 
-print(Add("//$\n1$-2$-3"))
-# comment the above line and comment the following line out to test it
-# print(Add("-1,2,-8")) 
+try:
+    Add("//$\n1$-2$-3")
+except Exception as e:
+    print(e)
+
+try:
+    Add("-1,2,-8")
+except Exception as e:
+    print(e)
 
 if Add("//$\n1$2$3") != 6:
     print("Error: expected Add('//$\n1$2$3') to be 6, got: ", Add("//$\n1$2$3") )

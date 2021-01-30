@@ -41,6 +41,12 @@ def Add(numbers):
 
 print("Testing start.")
 
+if Add("//***\n1***2***3") != 6:
+    print("Error: expected Add('//***\n1***2***3') to be 6, got: ", Add("//***\n1***2***3") )
+
+if Add("//*&%\n1*&%2*&%3") != 6:
+    print("Error: expected Add('//*&%\n1*&%2*&%3') to be 6, got: ", Add("//*&%\n1*&%2*&%3") )
+
 if Add("1000,1001") != 1000:
     print("Error: expected Add('1000,1001') to be 1000, got: ", Add("1000,1001") )
 

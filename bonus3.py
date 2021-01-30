@@ -3,10 +3,13 @@ def Add(numbers):
         return 0
     elif numbers.startswith('//'):
         newline_index = numbers.find('\n')
-        delimiter = numbers[2:newline_index]
+        delimiters = numbers[2:newline_index].split(',')
         numbers = numbers[newline_index+1:len(numbers)]
+
+        for delimiter in delimiters:
+            numbers = numbers.replace(delimiter, ',')
         
-        integers = [int(number.rstrip()) for number in numbers.split(delimiter)]
+        integers = [int(number.rstrip()) for number in numbers.split(',')]
 
         exception_occurred = False
         negatives = []
@@ -41,6 +44,9 @@ def Add(numbers):
 
 print("Testing start.")
 
+if Add("//$,@\n1$2@3") != 6:
+    print("Error: expected Add('//$,@\n1$2@3') to be 6, got: ", Add("//$,@\n1$2@3") )
+
 if Add("//***\n1***2***3") != 6:
     print("Error: expected Add('//***\n1***2***3') to be 6, got: ", Add("//***\n1***2***3") )
 
@@ -53,6 +59,16 @@ if Add("1000,1001") != 1000:
 if Add("6000,1001") != 0:
     print("Error: expected Add('6000,1001') to be 0, got: ", Add("6000,1001") )
 
+try:
+    Add("//$\n1$-2$-3")
+except Exception as e:
+    print(e)
+
+try:
+    Add("-1,2,-8")
+except Exception as e:
+    print(e)
+    
 if Add("//$\n1$2$3") != 6:
     print("Error: expected Add('//$\n1$2$3') to be 6, got: ", Add("//$\n1$2$3") )
 
