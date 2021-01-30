@@ -1,4 +1,4 @@
-# 7shifts_Interview_Questions
+# String Calculator
 
 - Codes were written in Python3.
 - Questions are not posted for privacy reason.
