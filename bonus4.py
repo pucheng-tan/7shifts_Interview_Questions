@@ -2,13 +2,18 @@ def Add(numbers):
     if len(numbers) == 0:
         return 0
     elif numbers.startswith('//'):
-        newline_index = numbers.find('\n')
-        delimiters = numbers[2:newline_index].split(',')
+
+        # Get the location of the new line in numbers
+        newline_index = numbers.find('\n') 
+        # Get a list of all the delimiters, items in type str
+        delimiters = numbers[2:newline_index].split(',') 
+        # Get the substring of numbers after the new line
         numbers = numbers[newline_index+1:len(numbers)]
 
         for delimiter in delimiters:
             numbers = numbers.replace(delimiter, ',')
-        
+
+        # Get a list of all the integers, items in type int
         integers = [int(number.rstrip()) for number in numbers.split(',')]
 
         exception_occurred = False
@@ -26,7 +31,8 @@ def Add(numbers):
             raise Exception('Negatives not allowed', negatives)
 
     else:
-        integers = [int(number.rstrip()) for number in numbers.split(',')]
+        # Get a list of all the integers, items in type int
+        integers = [int(number.rstrip()) for number in numbers.split(',')] 
 
         exception_occurred = False
         negatives = []
@@ -42,24 +48,31 @@ def Add(numbers):
         else:
             raise Exception('Negatives not allowed', negatives)
 
+
 if __name__ == "__main__":
 
     print("Testing start.")
 
+    if Add("//$,@@,**^\n1$2@@3**^4") != 10:
+        print("Error: expected Add('//$,@@,**^\n1$2@@3**^4') to be 10, got: ",
+            Add("//$,@@,**^\n1$2@@3**^4"))
+
     if Add("//$,@\n1$2@3") != 6:
-        print("Error: expected Add('//$,@\n1$2@3') to be 6, got: ", Add("//$,@\n1$2@3") )
+        print("Error: expected Add('//$,@\n1$2@3') to be 6, got: ", Add("//$,@\n1$2@3"))
 
     if Add("//***\n1***2***3") != 6:
-        print("Error: expected Add('//***\n1***2***3') to be 6, got: ", Add("//***\n1***2***3") )
+        print("Error: expected Add('//***\n1***2***3') to be 6, got: ",
+            Add("//***\n1***2***3"))
 
     if Add("//*&%\n1*&%2*&%3") != 6:
-        print("Error: expected Add('//*&%\n1*&%2*&%3') to be 6, got: ", Add("//*&%\n1*&%2*&%3") )
+        print("Error: expected Add('//*&%\n1*&%2*&%3') to be 6, got: ",
+            Add("//*&%\n1*&%2*&%3"))
 
     if Add("1000,1001") != 1000:
-        print("Error: expected Add('1000,1001') to be 1000, got: ", Add("1000,1001") )
+        print("Error: expected Add('1000,1001') to be 1000, got: ", Add("1000,1001"))
 
     if Add("6000,1001") != 0:
-        print("Error: expected Add('6000,1001') to be 0, got: ", Add("6000,1001") )
+        print("Error: expected Add('6000,1001') to be 0, got: ", Add("6000,1001"))
 
     try:
         Add("//$\n1$-2$-3")
@@ -72,23 +85,21 @@ if __name__ == "__main__":
         print(e)
 
     if Add("//$\n1$2$3") != 6:
-        print("Error: expected Add('//$\n1$2$3') to be 6, got: ", Add("//$\n1$2$3") )
+        print("Error: expected Add('//$\n1$2$3') to be 6, got: ", Add("//$\n1$2$3"))
 
     if Add("//@\n2@3@8") != 13:
-        print("Error: expected Add('//@\n2@3@8') to be 13, got: ", Add("//@\n2@3@8") )
+        print("Error: expected Add('//@\n2@3@8') to be 13, got: ", Add("//@\n2@3@8"))
 
     if Add("1\n,\n2,5") != 8:
-        print("Error: expected Add('1\n,\n2,5') to be 8, got: ", Add("1\n,\n2,5") )
+        print("Error: expected Add('1\n,\n2,5') to be 8, got: ", Add("1\n,\n2,5"))
 
     if Add("0,8,\n9") != 17:
-        print("Error: expected Add('0,8,\n9') to be 17, got: ", Add("0,8,\n9") )
+        print("Error: expected Add('0,8,\n9') to be 17, got: ", Add("0,8,\n9"))
 
     if Add("1,2,5") != 8:
-        print("Error: expected Add('1,2,5') to be 8, got: ", Add("1,2,5") )
+        print("Error: expected Add('1,2,5') to be 8, got: ", Add("1,2,5"))
 
     if Add("0,8,9") != 17:
-        print("Error: expected Add('0,8,9') to be 17, got: ", Add("0,8,9") )
+        print("Error: expected Add('0,8,9') to be 17, got: ", Add("0,8,9"))
 
     print("Testing finished.")
-
-

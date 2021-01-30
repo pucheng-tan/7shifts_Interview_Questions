@@ -39,36 +39,38 @@ def Add(numbers):
         else:
             raise Exception('Negatives not allowed', negatives)
 
-print("Testing start.")
+if __name__ == "__main__":
 
-try:
-    Add("//$\n1$-2$-3")
-except Exception as e:
-    print(e)
+    print("Testing start.")
 
-try:
-    Add("-1,2,-8")
-except Exception as e:
-    print(e)
+    try:
+        Add("//$\n1$-2$-3")
+    except Exception as e:
+        print(e)
 
-if Add("//$\n1$2$3") != 6:
-    print("Error: expected Add('//$\n1$2$3') to be 6, got: ", Add("//$\n1$2$3") )
+    try:
+        Add("-1,2,-8")
+    except Exception as e:
+        print(e)
 
-if Add("//@\n2@3@8") != 13:
-    print("Error: expected Add('//@\n2@3@8') to be 13, got: ", Add("//@\n2@3@8") )
+    if Add("//$\n1$2$3") != 6:
+        print("Error: expected Add('//$\n1$2$3') to be 6, got: ", Add("//$\n1$2$3") )
 
-if Add("1\n,\n2,5") != 8:
-    print("Error: expected Add('1\n,\n2,5') to be 8, got: ", Add("1\n,\n2,5") )
+    if Add("//@\n2@3@8") != 13:
+        print("Error: expected Add('//@\n2@3@8') to be 13, got: ", Add("//@\n2@3@8") )
 
-if Add("0,8,\n9") != 17:
-    print("Error: expected Add('0,8,\n9') to be 17, got: ", Add("0,8,\n9") )
+    if Add("1\n,\n2,5") != 8:
+        print("Error: expected Add('1\n,\n2,5') to be 8, got: ", Add("1\n,\n2,5") )
 
-if Add("1,2,5") != 8:
-    print("Error: expected Add('1,2,5') to be 8, got: ", Add("1,2,5") )
+    if Add("0,8,\n9") != 17:
+        print("Error: expected Add('0,8,\n9') to be 17, got: ", Add("0,8,\n9") )
 
-if Add("0,8,9") != 17:
-    print("Error: expected Add('0,8,9') to be 17, got: ", Add("0,8,9") )
+    if Add("1,2,5") != 8:
+        print("Error: expected Add('1,2,5') to be 8, got: ", Add("1,2,5") )
 
-print("Testing finished.")
+    if Add("0,8,9") != 17:
+        print("Error: expected Add('0,8,9') to be 17, got: ", Add("0,8,9") )
+
+    print("Testing finished.")
 
 

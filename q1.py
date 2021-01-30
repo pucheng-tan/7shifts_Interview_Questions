@@ -4,12 +4,14 @@ def Add(numbers):
     else:
         return sum([ int(integer) for integer in numbers.split(',')])
 
-print("Testing start.")
+if __name__ == "__main__":
 
-if Add("1,2,5") != 8:
-    print("Error: expected Add('1,2,5') to be 8, got: ", Add("1,2,5") )
+    print("Testing start.")
 
-if Add("0,8,9") != 17:
-    print("Error: expected Add('0,8,9') to be 17, got: ", Add("0,8,9") )
+    if Add("1,2,5") != 8:
+        print("Error: expected Add('1,2,5') to be 8, got: ", Add("1,2,5") )
 
-print("Testing finished.")
+    if Add("0,8,9") != 17:
+        print("Error: expected Add('0,8,9') to be 17, got: ", Add("0,8,9") )
+
+    print("Testing finished.")
