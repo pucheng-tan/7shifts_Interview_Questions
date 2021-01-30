@@ -15,7 +15,7 @@ def Add(numbers):
             if integer < 0:
                 exception_occurred = True
                 negatives.append(integer)
-            else:
+            elif integer <= 1000:
                 sum = sum + integer
         if exception_occurred == False:
             return sum
@@ -32,7 +32,7 @@ def Add(numbers):
             if integer < 0:
                 exception_occurred = True
                 negatives.append(integer)
-            else:
+            elif integer <= 1000:
                 sum = sum + integer
         if exception_occurred == False:
             return sum
@@ -41,9 +41,11 @@ def Add(numbers):
 
 print("Testing start.")
 
-print(Add("//$\n1$-2$-3"))
-# comment the above line and comment the following line out to test it
-# print(Add("-1,2,-8")) 
+if Add("1000,1001") != 1000:
+    print("Error: expected Add('1000,1001') to be 1000, got: ", Add("1000,1001") )
+
+if Add("6000,1001") != 0:
+    print("Error: expected Add('6000,1001') to be 0, got: ", Add("6000,1001") )
 
 if Add("//$\n1$2$3") != 6:
     print("Error: expected Add('//$\n1$2$3') to be 6, got: ", Add("//$\n1$2$3") )
